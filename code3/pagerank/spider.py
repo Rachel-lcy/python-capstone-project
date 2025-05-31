@@ -5,6 +5,9 @@ from urllib.parse import urljoin
 from urllib.parse import urlparse
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
+import collections
+
+collections.Callable = collections.abc.Callable
 
 # Ignore SSL certificate errors
 ctx = ssl.create_default_context()
@@ -30,7 +33,7 @@ if row is not None:
     print("Restarting existing crawl.  Remove spider.sqlite to start a fresh crawl.")
 else :
     starturl = input('Enter web url or enter: ')
-    if ( len(starturl) < 1 ) : starturl = 'http://www.dr-chuck.com/'
+    if ( len(starturl) < 1 ) : starturl = 'http://python-data.dr-chuck.net/'
     if ( starturl.endswith('/') ) : starturl = starturl[:-1]
     web = starturl
     if ( starturl.endswith('.htm') or starturl.endswith('.html') ) :
